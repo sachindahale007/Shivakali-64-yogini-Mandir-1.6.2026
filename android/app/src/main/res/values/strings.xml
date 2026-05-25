@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Shivakali 64 Yogini</string>
+    <string name="title_activity_main">Shivakali 64 Yogini</string>
+    <string name="package_name">com.shivakali.yogini64</string>
+    <string name="custom_url_scheme">com.shivakali.yogini64</string>
+</resources>

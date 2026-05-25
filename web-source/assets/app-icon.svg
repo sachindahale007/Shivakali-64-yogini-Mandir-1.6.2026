@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Shivakali 64 Yogini icon">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="38%" r="68%">
+      <stop offset="0%" stop-color="#f2b84b"/>
+      <stop offset="42%" stop-color="#bd2638"/>
+      <stop offset="100%" stop-color="#100c10"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39264a"/>
+      <stop offset="100%" stop-color="#171116"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#stone)"/>
+  <circle cx="256" cy="242" r="176" fill="url(#glow)" opacity="0.92"/>
+  <path d="M256 96c31 49 70 87 119 116-49 29-88 68-119 116-31-48-70-87-119-116 49-29 88-67 119-116Z" fill="#fff5e8" opacity="0.93"/>
+  <path d="M256 150c21 33 48 59 82 78-34 19-61 46-82 78-21-32-48-59-82-78 34-19 61-45 82-78Z" fill="#100c10"/>
+  <path d="M149 380h214v46H149z" fill="#f2b84b"/>
+  <path d="M188 346h136v34H188z" fill="#fff5e8"/>
+  <text x="256" y="272" text-anchor="middle" font-family="Georgia, serif" font-size="84" font-weight="700" fill="#f2b84b">64</text>
+</svg>

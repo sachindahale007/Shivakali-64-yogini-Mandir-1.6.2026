@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#100c10" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Shivakali 64 Yogini" />
+    <title>Shivakali 64 Yogini</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/app-icon.svg" />
+    <link rel="apple-touch-icon" href="assets/app-icon.svg" />
+    <link rel="stylesheet" href="styles.css?v=16" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <img src="assets/shivakali-hero.png" alt="Shivakali temple darshan" />
+        <div class="hero-overlay">
+          <div class="brand-mark" aria-hidden="true">ॐ</div>
+          <h1>Shivakali 64 Yogini Mandir, Chitrakoot</h1>
+          <p class="tagline">विश्व का प्रथम यंत्रात्मक मंदिर जहाँ माँ शिवकाली के साथ 64 योगिनियाँ यंत्र के रूप में विराजमान होंगी।</p>
+          <p class="build-badge">नया संस्करण 1.2</p>
+        </div>
+      </header>
+
+      <main>
+        <section id="homeView" class="view active" aria-labelledby="mainMenuTitle">
+          <div class="collection-top">
+          </div>
+          <div class="section-heading visually-hidden">
+            <p>शिवकाली 64 योगिनी</p>
+            <h2 id="mainMenuTitle">विषय</h2>
+          </div>
+          <label class="search-box" aria-label="खोजें">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="खोजें" autocomplete="off" oninput="window.handleSearchInput && window.handleSearchInput(this.value)" />
+          </label>
+          <div id="menuGrid" class="menu-grid"></div>
+        </section>
+
+        <section id="detailView" class="view" aria-live="polite">
+          <div class="detail-hero">
+            <p id="detailNumber" class="detail-number"></p>
+            <h2 id="detailTitle"></h2>
+            <p id="detailIntro"></p>
+          </div>
+          <div id="detailContent" class="detail-content"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-bar" aria-label="मुख्य नेविगेशन">
+        <button id="navHome" class="nav-item active" type="button" aria-label="होम">
+          <span aria-hidden="true">▦</span>
+          <small>मेनू</small>
+        </button>
+        <button id="navCategories" class="nav-item" type="button" aria-label="श्रेणियाँ">
+          <span aria-hidden="true">□</span>
+          <small>श्रेणियाँ</small>
+        </button>
+      </nav>
+    </div>
+
+    <script src="app.js?v=16"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => registration.unregister());
+        });
+      }
+      if ("caches" in window) {
+        caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
+      }
+    </script>
+  </body>
+</html>
