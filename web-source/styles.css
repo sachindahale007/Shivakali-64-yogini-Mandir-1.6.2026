@@ -488,6 +488,34 @@ body.theme-light .aura-grid {
   margin-bottom: 12px;
 }
 
+/* --- CATEGORY LINKS (landing & panels) --- */
+.category-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.category-link span { display: block; font-weight: 800; }
+.category-link small { display: block; color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; font-weight: 600; }
+.category-shortcut .ri-icon, .category-shortcut .emoji-icon { min-width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background: rgba(255,255,255,0.03); }
+
+html[data-theme="light"] body .category-link,
+body[data-theme="light"] .category-link,
+body.theme-light .category-link {
+  background: linear-gradient(180deg,#ffffff,#fff6ef);
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(112,68,30,0.06);
+  color: #1a0f0a;
+}
+
 .logo-link img {
   width: 28px;
   height: 28px;
@@ -591,12 +619,18 @@ body.theme-light .aura-grid {
 }
 
 .japa-display {
-  font-size: 7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  font-size: 4.5rem;
   font-weight: 900;
-  color: var(--gold);
-  text-shadow: 0 0 40px rgba(255, 204, 51, 0.4);
+  color: #00ffb3; /* digital green */
+  background: linear-gradient(180deg, rgba(0,0,0,0.85), rgba(16,16,16,0.95));
+  padding: 6px 18px;
+  border-radius: 10px;
+  border: 2px solid rgba(0,255,179,0.08);
+  box-shadow: inset 0 6px 18px rgba(0,0,0,0.6), 0 8px 30px rgba(0,255,179,0.05);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8), 0 6px 18px rgba(0,255,179,0.12);
+  letter-spacing: 2px;
   line-height: 1;
-  font-family: 'Poppins', sans-serif;
 }
 
 .japa-tap-zone {
