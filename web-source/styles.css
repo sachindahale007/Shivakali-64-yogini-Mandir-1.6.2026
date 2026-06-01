@@ -135,9 +135,10 @@ body.theme-light .main-heading {
 /* --- SEARCH --- */
 .search-container {
   padding: 0 16px;
-  margin-top: -5px;
+  margin-top: -8px; /* pulled up to remove tiny gap above */
   position: relative;
   z-index: 10;
+  background: transparent;
 }
 
 .search-container input {
@@ -160,6 +161,19 @@ body.theme-light .main-heading {
   border-color: var(--gold);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 30px rgba(255, 204, 51, 0.15);
+}
+
+/* Light-theme: make input clearly visible on light background */
+html[data-theme="light"] .search-container input,
+body.theme-light .search-container input {
+  background: #ffffff !important;
+  color: #1a0f0a !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+html[data-theme="light"] .search-container input::placeholder,
+body.theme-light .search-container input::placeholder {
+  color: #8b736a !important;
 }
 
 /* --- AURA GRID --- */
@@ -226,10 +240,10 @@ body.theme-light .aura-grid {
   line-height: 1.3;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3; /* allow up to 3 lines so titles don't get cut */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 2.6em;
+  height: calc(1.3em * 3);
 }
 
 .menu-desc {

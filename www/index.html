@@ -2,74 +2,84 @@
 <html lang="hi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#100c10" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Shivakali 64 Yogini" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080508" />
     <title>Shivakali 64 Yogini</title>
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="icon" href="assets/app-icon.svg" />
-    <link rel="apple-touch-icon" href="assets/app-icon.svg" />
-    <link rel="stylesheet" href="styles.css?v=16" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700;900&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=31" />
   </head>
   <body>
     <div class="app-shell">
-      <header class="hero">
-        <img src="assets/shivakali-hero.png" alt="Shivakali temple darshan" />
-        <div class="hero-overlay">
-          <div class="brand-mark" aria-hidden="true">ॐ</div>
-          <h1>Shivakali 64 Yogini Mandir, Chitrakoot</h1>
-          <p class="tagline">विश्व का प्रथम यंत्रात्मक मंदिर जहाँ माँ शिवकाली के साथ 64 योगिनियाँ यंत्र के रूप में विराजमान होंगी।</p>
-          <p class="build-badge">नया संस्करण 1.2</p>
-        </div>
-      </header>
-
       <main>
-        <section id="homeView" class="view active" aria-labelledby="mainMenuTitle">
-          <div class="collection-top">
+        <!-- Home View -->
+        <section id="homeView" class="view active">
+          <header class="hero">
+            <div class="hero-image-wrapper">
+                <img src="assets/shivakali-hero.png" alt="Shivakali Temple" />
+            </div>
+            <div class="hero-content">
+              <h1 class="main-heading">शिवकाली 64 योगिनी मंदिर</h1>
+              <div class="location-tag">
+                <span>🚩 चित्रकूट धाम</span>
+              </div>
+            </div>
+          </header>
+          <div class="search-container">
+            <label for="searchInput" class="visually-hidden">खोजें</label>
+            <input id="searchInput" type="search" placeholder="मैया के चरणों में खोजें..." autocomplete="off" />
           </div>
-          <div class="section-heading visually-hidden">
-            <p>शिवकाली 64 योगिनी</p>
-            <h2 id="mainMenuTitle">विषय</h2>
-          </div>
-          <label class="search-box" aria-label="खोजें">
-            <span aria-hidden="true">⌕</span>
-            <input id="searchInput" type="search" placeholder="खोजें" autocomplete="off" oninput="window.handleSearchInput && window.handleSearchInput(this.value)" />
-          </label>
-          <div id="menuGrid" class="menu-grid"></div>
+          <div id="menuGrid" class="aura-grid"></div>
         </section>
 
-        <section id="detailView" class="view" aria-live="polite">
-          <div class="detail-hero">
-            <p id="detailNumber" class="detail-number"></p>
+        <!-- Detail View -->
+        <section id="detailView" class="view">
+          <div class="sticky-header">
+            <div class="header-btns">
+                <div class="header-left-btns">
+                    <button id="btnFav" class="btn-fav" title="Save">♥</button>
+                    <button id="btnShare" title="Share">📤</button>
+                </div>
+                <div class="font-controls">
+                    <button id="btnTextDecrease">अ-</button>
+                    <button id="btnTextIncrease">अ+</button>
+                </div>
+            </div>
+            <p id="detailNumber" class="detail-cat-tag"></p>
             <h2 id="detailTitle"></h2>
-            <p id="detailIntro"></p>
           </div>
-          <div id="detailContent" class="detail-content"></div>
+          <p id="detailIntro" class="detail-intro-text"></p>
+          <div id="detailContent" class="detail-wrap"></div>
         </section>
       </main>
 
-      <nav class="bottom-bar" aria-label="मुख्य नेविगेशन">
-        <button id="navHome" class="nav-item active" type="button" aria-label="होम">
-          <span aria-hidden="true">▦</span>
-          <small>मेनू</small>
+      <!-- Fixed Bottom Nav -->
+      <nav class="bottom-nav">
+        <button id="navHome" class="nav-btn active">
+          <i class="ri-shining-2-fill icon"></i>
+          <span>Main Menu</span>
         </button>
-        <button id="navCategories" class="nav-item" type="button" aria-label="श्रेणियाँ">
-          <span aria-hidden="true">□</span>
-          <small>श्रेणियाँ</small>
+        <button id="navCategories" class="nav-btn">
+          <i class="ri-stack-fill icon"></i>
+          <span>Category</span>
+        </button>
+        <button id="navTheme" class="nav-btn" type="button">
+          <i class="ri-contrast-2-fill icon"></i>
+          <span>Theme</span>
         </button>
       </nav>
     </div>
 
-    <script src="app.js?v=16"></script>
+    <script src="app.js?v=31"></script>
     <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          registrations.forEach((registration) => registration.unregister());
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('SW Registered'))
+            .catch(err => console.log('SW Error', err));
         });
-      }
-      if ("caches" in window) {
-        caches.keys().then((keys) => keys.forEach((key) => caches.delete(key)));
       }
     </script>
   </body>

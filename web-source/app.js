@@ -1649,6 +1649,7 @@ updateFavoritesCategory();
 applyTheme(currentTheme);
 
 let currentQuery = "";
+let currentSectionId = null;
 let isRestoringHistory = false;
 let currentFontSize = 1.15; // default rem
 
@@ -1843,7 +1844,7 @@ function sectionById(id) {
 
 function showHome() {
   const searchInput = document.querySelector("#searchInput");
-  if (searchInput) { searchInput.value = ""; currentQuery = ""; }
+  if (searchInput) { searchInput.value = ""; currentQuery = ""; currentSectionId = null; }
   detailView.classList.remove("active");
   homeView.classList.add("active");
   quickButtons.forEach(b => b.classList.remove("active"));
@@ -1858,6 +1859,7 @@ function showCategories() {
   detailTitle.textContent = "विषय श्रेणियाँ";
   detailIntro.textContent = "ज्ञान, उपासना, सेवा, पंचांग और जाप काउंटर को यहाँ से सीधे खोलें।";
   detailIntro.style.display = "block";
+  currentSectionId = null;
   detailContent.innerHTML = renderCategoryLanding();
 
   // Reset tone
@@ -1979,7 +1981,8 @@ window.showSection = async function(id) {
     detailIntro.style.display = "none";
   }
 
-  detailContent.innerHTML = (s.blocks || []).map(renderBlock).join("");
+  currentSectionId = id;
+    detailContent.innerHTML = (s.blocks || []).map(renderBlock).join("");
 
   if (id === "japa-counter") initJapaCounter();
   if (id === "panchang") initPanchang();
@@ -2110,6 +2113,8 @@ function renderBlock(block) {
   }
 
   if (items.length > 0) {
+    const EMOJI_HIDE_SECTIONS = new Set(["kali-upasana","shiv-upasana","das-mahavidya","yogini","nitya-puja","sadhana","stotra-aarti"]);
+    const hideEmojis = EMOJI_HIDE_SECTIONS.has(currentSectionId);
     const listItems = items.map(item => {
       if (!item) return "";
       if (typeof item === "object") {
@@ -2117,14 +2122,16 @@ function renderBlock(block) {
         if (item.image) return `<li class="photo-card"><img src="${item.image}" loading="lazy" alt="${itemText}"><small>${itemText}</small></li>`;
         if (item.logo) return `<li class="logo-item"><button class="logo-link" data-url="${item.url}"><img src="${item.logo}" alt=""><span>${itemText}</span></button></li>`;
 
-        let iconHtml = getIconHtml(item.icon || item.symbol || leadingSymbol(item.text) || blockIconClass(block));
+        let iconHtml = "";
+        if (!hideEmojis) iconHtml = getIconHtml(item.icon || item.symbol || leadingSymbol(item.text) || blockIconClass(block));
         if (item.pdfUrl) return `<li><button class="item-link" data-pdf="${item.pdfUrl}">${iconHtml}<span>${itemText}</span></button></li>`;
         if (item.url) return `<li><button class="item-link" data-url="${item.url}">${iconHtml}<span>${itemText}</span></button></li>`;
         if (item.link) return `<li><button class="item-link" data-section="${item.link}">${iconHtml}<span>${itemText}</span></button></li>`;
         return `<li><div class="info-item">${iconHtml}<span>${itemText}</span></div></li>`;
       }
       const itemText = cleanItemText(item);
-      return `<li><div class="info-item">${iconHtmlByClass(blockIconClass(block))}<span>${itemText}</span></div></li>`;
+      const blockIconHtml = hideEmojis ? "" : iconHtmlByClass(blockIconClass(block));
+      return `<li><div class="info-item">${blockIconHtml}<span>${itemText}</span></div></li>`;
     }).join("");
     html += `<ul class="${contentClass}">${listItems}</ul>`;
   }

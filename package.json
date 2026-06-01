@@ -4,7 +4,7 @@
   "private": true,
   "description": "Devotional mobile app for Maa Kali, Bhagwan Shiv, Das Mahavidya and 64 Yogini content.",
   "scripts": {
-    "start": "npx http-server . -p 4173",
+    "start": "npx http-server www -p 4173",
     "android:add": "npx cap add android",
     "ios:add": "npx cap add ios",
     "android:open": "npx cap open android",
