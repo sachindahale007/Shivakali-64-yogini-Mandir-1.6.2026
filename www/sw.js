@@ -1,4 +1,4 @@
-const CACHE_NAME = "shivakali-64-yogini-v17";
+const CACHE_NAME = "shivakali-64-yogini-v19";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -6,19 +6,19 @@ const APP_ASSETS = [
   "./app.js",
   "./manifest.webmanifest",
   "./assets/app-icon.svg",
-  "./assets/shivakali-hero.png",
-  "./assets/mandir.png",
-  "./assets/kali.png",
-  "./assets/shiv.png",
-  "./assets/mahavidya.png",
-  "./assets/yogini.png",
-  "./assets/puja.png",
-  "./assets/sadhana.png",
-  "./assets/stotra.png",
-  "./assets/donation.png",
-  "./assets/events.png",
-  "./assets/gallery.png",
-  "./assets/books.png"
+  "./assets/shivakali-hero.jpg",
+  "./assets/mandir.jpg",
+  "./assets/kali.jpg",
+  "./assets/shiv.jpg",
+  "./assets/mahavidya.jpg",
+  "./assets/yogini.jpg",
+  "./assets/puja.jpg",
+  "./assets/sadhana.jpg",
+  "./assets/stotra.jpg",
+  "./assets/donation.jpg",
+  "./assets/events.jpg",
+  "./assets/panchang.jpg",
+  "./assets/gallery.jpg"
 ];
 
 self.addEventListener("install", (event) => {
